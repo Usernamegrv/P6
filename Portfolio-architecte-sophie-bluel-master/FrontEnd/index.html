@@ -12,7 +12,7 @@
 	<meta name="description" content="Page web de Sophie-bluel">
 	<link rel="stylesheet" href="../FrontEnd/assets/style.css">
 	<script src="../FrontEnd/js/home.js" defer></script>
-	<script src="../FrontEnd/js/login.js" defer></script>
+	<script src="../FrontEnd/js/app.js" defer></script>
 </head>
 
 <body>
@@ -26,7 +26,7 @@
 			<ul>
 				<li>projets</li>
 				<li>contact</li>
-				<li id="login-link">Login</li>
+				<li id="login-link">login</li>
 				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 			</ul>
 		</nav>
@@ -51,8 +51,26 @@
 		<section id="portfolio">
 			<div class="mes_projets"> 
 			<h2>Mes Projets</h2><img src="../FrontEnd/assets/icons/Vector_black.svg" alt="icone modifier mes projets" id="icone-modifer">
-			<div id="modifier_mesProjets">  Modifier</div>
+			<div id="modifier_mesProjets"><a href="#modal1" class="js-modal"> Modifier</a></div>
 		 </div>
+
+		 <aside id="modal1" class="modal" aria-hidden="true" role="dialog" aria-modal="false"
+				aria-labelledby="titleModal" style="display:flex;">
+
+				<div class="modal-modifier">
+					<img class="xmark"src="../FrontEnd/assets/icons/xmark.svg" alt="icone fermer modale" id="xmark">
+
+					<h3 id="titleModal">Galerie photo</h3>
+					<img class="trash-icon" src="../FrontEnd/assets/icons/trash-can-solid.svg" alt="icone supprimer image" id="trash-icon">
+
+					<div class="modal-gallery" id="modal-gallery"></div>
+
+					<div class="border-modal"></div>
+					<button id="ajout-photo">Ajouter une photo</button>
+
+				</div>
+
+			</aside>
 
 			<div class="filters">
 				<button class="filter-button" id="all" data-category="Tous">

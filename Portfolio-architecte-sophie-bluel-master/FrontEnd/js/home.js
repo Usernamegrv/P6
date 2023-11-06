@@ -49,6 +49,7 @@ const authToken = sessionStorage.getItem("authToken");
 const editionBanner = document.getElementById("mode_edition");
 const loginLink = document.getElementById("login-link");
 const iconeModifier = document.getElementById("icone-modifer");
+const modifierMesProjets = document.getElementById("modifier_mesProjets");
 
 
 if (authToken) {
@@ -59,7 +60,7 @@ if (authToken) {
     });
     editionBanner.style.display = "flex";
 
-    loginLink.innerHTML='<a href="#">Logout</a>';
+    loginLink.innerHTML='<a href="#">logout</a>';
 
     loginLink.addEventListener("click", function (event) {
         event.preventDefault();
@@ -69,6 +70,7 @@ if (authToken) {
     });
 
     iconeModifier.style.dsplay = "block";
+    modifierMesProjets.style.display = "block";
 
 } else {
     // L'utilisateur n'est pas connecté
@@ -78,8 +80,9 @@ if (authToken) {
     });
     editionBanner.style.display = "none";
 
-    loginLink.innerHTML = '<a href="../FrontEnd/login.html">Login</a>';
+    loginLink.innerHTML = '<a href="../FrontEnd/login.html">login</a>';
 
     iconeModifier.style.display = "none";
+    modifierMesProjets.style.display = "none";
     
 }
