@@ -135,6 +135,7 @@ body {
 	font-size: 14px;
 	background: #fffef8;
 }
+
 header {
 	display: flex;
 	justify-content: space-between;
@@ -174,7 +175,7 @@ nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
 }
-nav a{
+nav a {
 	text-decoration: none;
 	color: black;
 }
@@ -209,19 +210,20 @@ li:hover {
 #introduction p {
 	margin-bottom: 0.5em;
 }
-#portfolio h2{
+#portfolio h2 {
 	margin-bottom: 1em;
 }
-.mes_projets{
+.mes_projets {
 	display: flex;
 	justify-content: center;
 	align-items: baseline;
 }
-#icone-modifer{
+#icone-modifer {
 	margin-left: 1em;
 }
 /*Modale*/
-.modal{
+
+.modal {
 	position: fixed;
 	display: flex;
 	align-items: center;
@@ -233,45 +235,61 @@ li:hover {
 	background: rgba(0, 0, 0, 0.5);
 }
 
-.modal-modifier{
+.modal-modifier {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 450px;
-	height: 450px;
-	padding: 20px;
+	width: 525px;
+	height: 620px;
+	padding: 30px 60px 20px 60px;
 	border-radius: 10px;
-	background-color: #FFF;
+	background-color: #fff;
 }
-.xmark{
+.xmark {
 	position: relative;
-	left: 200px;
+	left: 276px;
 	cursor: pointer;
 }
 .modal-modifier h3 {
 	font-family: Work Sans;
 	font-size: 26px;
-	margin: 40px 0 40px 0;
+	margin: 0 0 46px 0;
 }
-.trash-icon{
+.trash-icon {
 	background: black;
 	width: 10px;
 	padding: 5px;
 	border-radius: 3px;
 	cursor: pointer;
+	display: none;
 }
-.border-modal{
-	width: 350px;
+.modal-gallery {
+	display: grid;
+	width: 100%;
+	justify-content: center;
+	grid-template-columns: 103px 103px 103px 103px 103px ;
+}
+.modal figure {
+	margin: 0;
+	max-width: 100%;
+}
+.img-projects {
+	height: auto;
+	width: 95px;
+	margin: 0 0 10px 0;
+}
+.border-modal {
+	width: 430px;
 	border: solid 1px;
-	color: rgba(0, 0, 0, 0.30);
-	margin-bottom: 30px;
+	color: rgba(0, 0, 0, 0.3);
+	margin: 25px 0 30px 0;
 }
-#ajout-photo{
+#ajout-photo {
 	width: 237px;
 	height: 36px;
 	border-radius: 60px;
 	background: #1d6154;
-	color: #FFF;
+	color: #fff;
 	font-family: Work Sans;
 	cursor: pointer;
 }
@@ -418,4 +436,3 @@ footer nav ul {
 #mode_edition span {
 	color: white;
 }
-

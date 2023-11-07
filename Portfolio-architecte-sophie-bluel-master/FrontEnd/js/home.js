@@ -19,11 +19,13 @@ document.addEventListener("DOMContentLoaded", () => {
             .then(response => response.json())
             .then(projects => {
                 gallery.innerHTML = ""; 
+                
 
                 projects.forEach(project => {
                     if (categoryName === "Tous" || project.category.name === categoryName) {
                         const projectElement = createProjectElement(project);
                         gallery.appendChild(projectElement);
+                        
                     }
                 });
             });
