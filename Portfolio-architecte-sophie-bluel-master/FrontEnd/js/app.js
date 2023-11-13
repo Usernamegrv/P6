@@ -73,7 +73,7 @@ const afficherProjets = (projects) => {
 function createProjectElement(project) {
   const projectElement = document.createElement("figure");
 
-  projectElement.innerHTML = ` <img class="trash-icon" src="../FrontEnd/assets/icons/trash-can-solid.svg" alt="icone supprimer image" id="${project.id}"> <img class="img-projects" src="${project.imageUrl}" alt="${project.title}" id="${project.id}"> `;
+  projectElement.innerHTML = ` <img class="trash-icon" src="../FrontEnd/assets/icons/trash-can-solid.svg" alt="icone supprimer image" id="${project.id}" onclick="return confirm('Etes-vous sûr de vouloir supprimer?');"/> <img class="img-projects" src="${project.imageUrl}" alt="${project.title}" id="${project.id}"> `;
 
   const trashIcon = projectElement.querySelector(".trash-icon");
   trashIcon.addEventListener("click", () => {
@@ -118,6 +118,7 @@ function deleteProject(projectId) {
         throw new Error("La suppression a échouée.");
       }
 
+      projectId.preventDefault();
       afficherProjets();
     })
     .catch((error) => {
