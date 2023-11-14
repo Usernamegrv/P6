@@ -87,12 +87,42 @@
               id="xmark"
             />
 
-            <h3 id="titleModal">Galerie photo</h3>
+            <div class="mode-suppression">
+              <h3 id="titleModal">Galerie photo</h3>
 
-            <div class="modal-gallery" id="modal-gallery"></div>
+              <div class="modal-gallery" id="modal-gallery"></div>
 
-            <div class="border-modal"></div>
-            <button id="ajout-photo">Ajouter une photo</button>
+              <div class="border-modal"></div>
+
+              <button id="ajout-photo">Ajouter une photo</button>
+            </div>
+
+            <div class="mode-ajout">
+              <h3 id="titleModal">Ajout photo</h3>
+
+              <div class="formulaire-container">
+                <div class="formulaire-ajoutPhoto">
+                  <img
+                    class="logo-ajout"
+                    src="./assets/icons/picture-svgrepo-com 1.svg"
+                  />
+                  <label for="file" class="label-style">
+                    + Ajouter une photo
+                  </label>
+                  <span class="label-text">jpg, png :4mo max</span>
+                  <input
+                    type="file"
+                    id="file"
+                    name="file"
+                    accept=".jpg, .png"
+                    multiple
+                  />
+                </div>
+              </div>
+
+              <div class="border-modal"></div>
+              <button id="btn-valider">Valider</button>
+            </div>
           </div>
         </aside>
 

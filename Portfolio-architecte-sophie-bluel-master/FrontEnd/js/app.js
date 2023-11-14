@@ -65,10 +65,8 @@ const afficherProjets = (projects) => {
 
   modalGallery.innerHTML = "";
 
-  modalGallery.classList.remove("mode-ajout");
-  modalGallery.classList.add("mode-suppresion");
-  titleModal.innerHTML = "Galerie";
-  // btnAjout.innerHTML = "Ajouter une photo";
+  modeAjout.style.display = "none";
+  modeSuppression.style.display = "flex";
 
   projects.forEach((project) => {
     const projectElement = createProjectElement(project);
@@ -102,6 +100,7 @@ const getProjects = async () => {
 
     if (response.ok) {
       const projects = await response.json();
+
       afficherProjets(projects);
     } else {
       console.error("Impossible de charger les projets.");
@@ -145,28 +144,10 @@ function deleteProject(id) {
 // Modale ajout photo
 
 const ajoutPhoto = document.getElementById("ajout-photo");
+const modeAjout = document.querySelector(".mode-ajout");
+const modeSuppression = document.querySelector(".mode-suppression");
 
 ajoutPhoto.addEventListener("click", () => {
-  const modalGallery = document.getElementById("modal-gallery");
-  const titleModal = document.getElementById("titleModal");
-  const btnAjout = document.getElementById("ajout-photo");
-
-  // const fileBtn = document.getElementById("file");
-  // console.log(fileBtn);
-
-  modalGallery.classList.remove("mode-supression");
-  modalGallery.classList.add("mode-ajout");
-
-  titleModal.innerHTML = "Ajout photo";
-
-  modalGallery.innerHTML = ` <div class="formulaire-container">
-                             <div class="formulaire-ajoutPhoto">
-                             <img class="logo-ajout" src="./assets/icons/picture-svgrepo-com 1.svg">
-                             <label for="file"></label>
-                             <input type="file" id="file" name="file" accept=".jpg, .png" multiple>
-                             </div>
-                             </div>
-                             `;
-
-  btnAjout.innerHTML = "Valider";
+  modeSuppression.style.display = "none";
+  modeAjout.style.display = "flex";
 });
