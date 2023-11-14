@@ -67,7 +67,7 @@ if (authToken) {
     event.preventDefault();
     sessionStorage.removeItem("authToken");
 
-    window.location.href = "../FrontEnd/index.html";
+    window.location.href = "./index.html";
   });
 
   iconeModifier.style.dsplay = "block";
@@ -80,7 +80,7 @@ if (authToken) {
   });
   editionBanner.style.display = "none";
 
-  loginLink.innerHTML = '<a href="../FrontEnd/login.html">login</a>';
+  loginLink.innerHTML = '<a href="./login.html">login</a>';
 
   iconeModifier.style.display = "none";
   modifierMesProjets.style.display = "none";

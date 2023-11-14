@@ -1,68 +1,65 @@
 <!DOCTYPE html>
 <html lang="fr">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Sophie Bluel - Architecte d'intérieur</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
-        rel="stylesheet">
-    <meta name="description" content="Page de connexion">
-    <link rel="stylesheet" href="../FrontEnd/assets/style.css">
-    <link rel="stylesheet" href="../FrontEnd/index.html">
-    <script src="../FrontEnd/js/login.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="description" content="Page de connexion" />
+    <link rel="stylesheet" href="./assets/style.css" />
+    <link rel="stylesheet" href="./index.html" />
+    <script src="./js/login.js" defer></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header>
-        <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-        <nav>
-            <ul>
-                <li>projets</li>
-                <li>contact</li>
-                <li><span>login</span></li>
-                <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-            </ul>
-        </nav>
+      <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+      <nav>
+        <ul>
+          <li>projets</li>
+          <li>contact</li>
+          <li><span>login</span></li>
+          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+        </ul>
+      </nav>
     </header>
 
-
     <section id="connexion">
-        <h2>Log In</h2>
+      <h2>Log In</h2>
 
-        <form class="formulaire-connexion" method="post">
+      <form class="formulaire-connexion" method="post">
+        <label for="email">E-mail</label><br />
+        <input type="email" name="email" id="email" /><br />
 
-            <label for="email">E-mail</label><br>
-            <input type="email" name="email" id="email"><br>
+        <label for="password">Mot de passe</label><br />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          autocomplete="current-password"
+        /><br />
 
-            <label for="password">Mot de passe</label><br>
-            <input type="password" name="password" id="password" autocomplete="current-password"><br>
+        <input type="submit" value="Se connecter" />
 
-            <input type="submit" value="Se connecter">
-
-            <div class="password_forget">
-                <a href="">
-                    <p>Mot de passe oublié</p>
-                </a>
-            </div>
-
-
-
-        </form>
+        <div class="password_forget">
+          <a href="">
+            <p>Mot de passe oublié</p>
+          </a>
+        </div>
+      </form>
     </section>
 
-
     <footer id="footer_login">
-        <nav>
-            <ul>
-                <li>Mentions Légales</li>
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li>Mentions Légales</li>
+        </ul>
+      </nav>
     </footer>
-
-</body>
-
+  </body>
 </html>
