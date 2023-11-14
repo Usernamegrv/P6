@@ -48,6 +48,7 @@ document.querySelectorAll(".js-modal").forEach((a) => {
 });
 
 // close modale avec le clavier / se diriger dans la modale avec clavier
+
 window.addEventListener("keydown", function (e) {
   if (e.key === "Escape" || e.key === "Esc") {
     closeModal(e);
@@ -63,6 +64,11 @@ const afficherProjets = (projects) => {
   const modalGallery = document.getElementById("modal-gallery");
 
   modalGallery.innerHTML = "";
+
+  modalGallery.classList.remove("mode-ajout");
+  modalGallery.classList.add("mode-suppresion");
+  titleModal.innerHTML = "Galerie";
+  // btnAjout.innerHTML = "Ajouter une photo";
 
   projects.forEach((project) => {
     const projectElement = createProjectElement(project);
@@ -104,6 +110,16 @@ const getProjects = async () => {
   }
 };
 
+document.querySelectorAll(".js-modal").forEach((element) => {
+  element.addEventListener("click", (e) => {
+    openModal(e);
+    e.preventDefault();
+    getProjects();
+  });
+});
+
+// Fonction pour supprimer un projet
+
 function deleteProject(projectId) {
   const apiUrl = `http://localhost:5678/api/works/{id}`;
   fetch(apiUrl, {
@@ -126,28 +142,29 @@ function deleteProject(projectId) {
     });
 }
 
-document.querySelectorAll(".js-modal").forEach((element) => {
-  element.addEventListener("click", (e) => {
-    openModal(e);
-    e.preventDefault();
-    getProjects();
-  });
-});
-
-// Ajout photo
+// Modale ajout photo
 
 const ajoutPhoto = document.getElementById("ajout-photo");
+
 ajoutPhoto.addEventListener("click", () => {
   const modalGallery = document.getElementById("modal-gallery");
   const titleModal = document.getElementById("titleModal");
   const btnAjout = document.getElementById("ajout-photo");
 
-  titleModal.style.display = "none";
-  modalGallery.classList.remove("modal-gallery");
-  modalGallery.innerHTML = ` <div class="formulaire-ajoutPhoto">
-                             <h3>Ajout Photo</h3>
+  // const fileBtn = document.getElementById("file");
+  // console.log(fileBtn);
+
+  modalGallery.classList.remove("mode-supression");
+  modalGallery.classList.add("mode-ajout");
+
+  titleModal.innerHTML = "Ajout photo";
+
+  modalGallery.innerHTML = ` <div class="formulaire-container">
+                             <div class="formulaire-ajoutPhoto">
+                             <img class="logo-ajout" src="./assets/icons/picture-svgrepo-com 1.svg">
                              <label for="file"></label>
                              <input type="file" id="file" name="file" accept=".jpg, .png" multiple>
+                             </div>
                              </div>
                              `;
 
