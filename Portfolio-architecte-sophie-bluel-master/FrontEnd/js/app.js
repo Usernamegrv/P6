@@ -79,11 +79,12 @@ const afficherProjets = (projects) => {
 function createProjectElement(project) {
   const projectElement = document.createElement("figure");
 
-  projectElement.innerHTML = ` <img class="trash-icon" src="./assets/icons/trash-can-solid.svg" alt="icone supprimer image" id="${project.id}" onclick="return confirm('Etes-vous sûr de vouloir supprimer?');"/> <img class="img-projects" src="${project.imageUrl}" alt="${project.title}" id="${project.id}"> `;
+  projectElement.innerHTML = ` <img class="trash-icon" src="./assets/icons/trash-can-solid.svg" alt="icone supprimer image" id="${project.id}"> <img class="img-projects" src="${project.imageUrl}" alt="${project.title}" id="${project.id}"> `;
 
   const trashIcon = projectElement.querySelector(".trash-icon");
   trashIcon.addEventListener("click", () => {
-    deleteProject(project.id);
+    if (confirm("Etes-vous sûr de vouloir supprimer?"))
+      deleteProject(project.id);
   });
 
   return projectElement;
@@ -120,8 +121,8 @@ document.querySelectorAll(".js-modal").forEach((element) => {
 
 // Fonction pour supprimer un projet
 
-function deleteProject(projectId) {
-  const apiUrl = `http://localhost:5678/api/works/{id}`;
+function deleteProject(id) {
+  const apiUrl = `http://localhost:5678/api/works/${id}`;
   fetch(apiUrl, {
     method: "DELETE",
     headers: {
@@ -134,8 +135,7 @@ function deleteProject(projectId) {
         throw new Error("La suppression a échouée.");
       }
 
-      projectId.preventDefault();
-      afficherProjets();
+      getProjects();
     })
     .catch((error) => {
       console.error("Erreur lors de la suppression du projet:", error);
