@@ -2,7 +2,9 @@ let modal = null;
 const focusableSelector = "button, a, input, textarea";
 let focusables = [];
 
-//ouvrir fermer modale
+// Ouvrir fermer modale
+//---------------------
+
 const openModal = function (e) {
   e.preventDefault();
   modal = document.querySelector(e.target.getAttribute("href"));
@@ -43,11 +45,17 @@ const focusInModal = function (e) {
   console.log(focusables);
 };
 
-document.querySelectorAll(".js-modal").forEach((a) => {
-  a.addEventListener("click", openModal);
+document.querySelectorAll(".js-modal").forEach((element) => {
+  element.addEventListener("click", (e) => {
+    openModal(e);
+    e.preventDefault();
+    getProjects();
+  });
 });
 
-// close modale avec le clavier / se diriger dans la modale avec clavier
+// Close modale avec le clavier /
+//se diriger dans la modale avec clavier
+//---------------------------------------
 
 window.addEventListener("keydown", function (e) {
   if (e.key === "Escape" || e.key === "Esc") {
@@ -58,8 +66,12 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
+//--------------------------------------------
 //Récupérer projets et afficher dans la modale
+//--------------------------------------------
 
+// Fonction pour ajouter projets dans la modale mode-suppression
+//--------------------------------------------------------------
 const afficherProjets = (projects) => {
   const modalGallery = document.getElementById("modal-gallery");
 
@@ -71,9 +83,12 @@ const afficherProjets = (projects) => {
   projects.forEach((project) => {
     const projectElement = createProjectElement(project);
     modalGallery.appendChild(projectElement);
+    console.log(projectElement);
   });
 };
 
+// Fonction pour déterminer le modèle d'un projet pour la modale
+//--------------------------------------------------------------
 function createProjectElement(project) {
   const projectElement = document.createElement("figure");
 
@@ -88,6 +103,8 @@ function createProjectElement(project) {
   return projectElement;
 }
 
+// Fonction pour Fetch projets
+//----------------------------
 const getProjects = async () => {
   try {
     const response = await fetch("http://localhost:5678/api/works", {
@@ -110,16 +127,8 @@ const getProjects = async () => {
   }
 };
 
-document.querySelectorAll(".js-modal").forEach((element) => {
-  element.addEventListener("click", (e) => {
-    openModal(e);
-    e.preventDefault();
-    getProjects();
-  });
-});
-
 // Fonction pour supprimer un projet
-
+//----------------------------------
 function deleteProject(id) {
   const apiUrl = `http://localhost:5678/api/works/${id}`;
   fetch(apiUrl, {
@@ -141,8 +150,12 @@ function deleteProject(id) {
     });
 }
 
+//-------------------
 // Modale ajout photo
+//-------------------
 
+// Affiche la modale mode-ajout
+//-----------------------------
 const ajoutPhoto = document.getElementById("ajout-photo");
 const modeAjout = document.querySelector(".mode-ajout");
 const modeSuppression = document.querySelector(".mode-suppression");
@@ -151,3 +164,20 @@ ajoutPhoto.addEventListener("click", () => {
   modeSuppression.style.display = "none";
   modeAjout.style.display = "flex";
 });
+
+// Fonction pour prévisualiser l'image sélectionnée
+//-------------------------------------------------
+function previewImage(event) {
+  const input = event.target;
+  const preview = document.getElementById("preview-image");
+
+  if (input.files && input.files[0]) {
+    const reader = new FileReader();
+    console.log(reader);
+
+    reader.onload = function (e) {
+      preview.src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}

@@ -1,3 +1,7 @@
+//---------------------
+// FORMULAIRE CONNEXION
+//---------------------
+
 function ajoutListenerConnexion() {
   const formulaireConnexion = document.querySelector(".formulaire-connexion");
   formulaireConnexion.addEventListener("submit", function (event) {

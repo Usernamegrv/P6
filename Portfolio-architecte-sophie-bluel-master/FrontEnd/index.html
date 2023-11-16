@@ -104,6 +104,7 @@
                 <div class="formulaire-ajoutPhoto">
                   <img
                     class="logo-ajout"
+                    id="preview-image"
                     src="./assets/icons/picture-svgrepo-com 1.svg"
                   />
                   <label for="file" class="label-style">
@@ -116,6 +117,7 @@
                     name="file"
                     accept=".jpg, .png"
                     multiple
+                    onchange="previewImage(event)"
                   />
                 </div>
               </div>

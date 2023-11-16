@@ -1,11 +1,11 @@
+//-------------------------------------------------
 //Affichage projets et filtrage selon category name
+//-------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
-  const filtersContainer = document.querySelector(".filters");
   const gallery = document.querySelector(".gallery");
   const filterButtons = document.querySelectorAll(".filter-button");
 
-  // Ajoute un gestionnaire d'événements à chaque bouton de filtrage.
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       const category = button.getAttribute("data-category");
@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Fonction pour afficher tous les projets ou filtrer par catégorie.
+  // Fonction Fetch pour afficher projets selon catégorie
+  //-----------------------------------------------------
   function filterProjectsByCategory(categoryName) {
     fetch("http://localhost:5678/api/works")
       .then((response) => response.json())
@@ -32,7 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   }
 
-  // Crée un élément HTML pour un projet.
+  // Fonction pour déterminer le modele d'un projet pour page d'accueil
+  //-------------------------------------------------------------------
   function createProjectElement(project) {
     const projectElement = document.createElement("figure");
     projectElement.innerHTML = ` <img src="${project.imageUrl}" alt="${project.title}">
@@ -46,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Récupération du token pour mode édition
+//---------------------------------------
 
 const authToken = sessionStorage.getItem("authToken");
 const editionBanner = document.getElementById("mode_edition");
