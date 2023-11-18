@@ -121,9 +121,20 @@
                   />
                 </div>
               </div>
+              <form id="addProject" enctype="multipart/form-data">
+                <label for="title">Titre</label>
+                <input type="text" id="title" name="title" required />
+
+                <label for="category">Catégorie</label>
+                <select name="category" id="category" required>
+                  <option value="1">Objets</option>
+                  <option value="2">Appartements</option>
+                  <option value="3">Hôtels & Restaurants</option>
+                </select>
+              </form>
 
               <div class="border-modal"></div>
-              <button id="btn-valider">Valider</button>
+              <button id="btn-valider" onclick="submitForm()">Valider</button>
             </div>
           </div>
         </aside>

@@ -26,7 +26,10 @@ function ajoutListenerConnexion() {
           console.log("Token:", data.token);
 
           const token = `${data.token}`;
+          const userId = data.userId;
           sessionStorage.setItem("authToken", token);
+          sessionStorage.setItem("userId", userId);
+          console.log(userId);
 
           window.location.href = "./index.html";
         } else {

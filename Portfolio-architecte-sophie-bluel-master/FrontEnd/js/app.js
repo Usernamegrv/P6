@@ -181,3 +181,56 @@ function previewImage(event) {
     reader.readAsDataURL(input.files[0]);
   }
 }
+
+//--------------------------
+// Envoi du formulaire ajout
+//--------------------------
+
+function submitForm() {
+  const title = document.getElementById("title").value;
+  const category = document.getElementById("category").value;
+  const fileInput = document.getElementById("file");
+  const imageFile = fileInput.files[0];
+  const userId = sessionStorage.getItem("userId");
+  const authToken = sessionStorage.getItem("authToken");
+  console.log(category);
+  console.log(authToken);
+  console.log(imageFile);
+
+  const reader = new FileReader();
+
+  reader.onload = function () {
+    const imageString = reader.result;
+
+    const apiData = {
+      title: title,
+      categoryId: category,
+      imageUrl: imageString,
+      userId: userId,
+    };
+
+    console.log(apiData);
+
+    fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${authToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(apiData),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Erreur ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Requête réussie !!", data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la requête :", error.message);
+      });
+  };
+  reader.readAsDataURL(imageFile);
+}
