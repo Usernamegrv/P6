@@ -1,5 +1,5 @@
 //-------------------------------------------------
-//Affichage projets et filtrage selon category name
+// Affichage projets et filtrage selon category name
 //-------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {

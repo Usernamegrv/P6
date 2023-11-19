@@ -87,6 +87,8 @@
               id="xmark"
             />
 
+            <!-- Modale mode suppression-->
+
             <div class="mode-suppression">
               <h3 id="titleModal">Galerie photo</h3>
 
@@ -97,31 +99,34 @@
               <button id="ajout-photo">Ajouter une photo</button>
             </div>
 
+            <!-- Modale mode ajout-->
+
             <div class="mode-ajout">
               <h3 id="titleModal">Ajout photo</h3>
 
-              <div class="formulaire-container">
-                <div class="formulaire-ajoutPhoto">
-                  <img
-                    class="logo-ajout"
-                    id="preview-image"
-                    src="./assets/icons/picture-svgrepo-com 1.svg"
-                  />
-                  <label for="file" class="label-style">
-                    + Ajouter une photo
-                  </label>
-                  <span class="label-text">jpg, png :4mo max</span>
-                  <input
-                    type="file"
-                    id="file"
-                    name="file"
-                    accept=".jpg, .png"
-                    multiple
-                    onchange="previewImage(event)"
-                  />
-                </div>
-              </div>
               <form id="addProject" enctype="multipart/form-data">
+                <div class="formulaire-container">
+                  <div class="formulaire-ajoutPhoto">
+                    <img
+                      class="logo-ajout"
+                      id="preview-image"
+                      src="./assets/icons/picture-svgrepo-com 1.svg"
+                    />
+                    <label for="file" class="label-style">
+                      + Ajouter une photo
+                    </label>
+                    <span class="label-text">jpg, png :4mo max</span>
+                    <input
+                      type="file"
+                      id="file"
+                      name="image"
+                      accept=".jpg, .png"
+                      multiple
+                      onchange="previewImage(event)"
+                    />
+                  </div>
+                </div>
+
                 <label for="title">Titre</label>
                 <input type="text" id="title" name="title" required />
 
@@ -131,10 +136,10 @@
                   <option value="2">Appartements</option>
                   <option value="3">Hôtels & Restaurants</option>
                 </select>
-              </form>
 
-              <div class="border-modal"></div>
-              <button id="btn-valider" onclick="submitForm()">Valider</button>
+                <div class="border-modal"></div>
+                <button type="submit" id="btn-valider">Valider</button>
+              </form>
             </div>
           </div>
         </aside>

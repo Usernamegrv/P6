@@ -304,6 +304,16 @@ li:hover {
   height: 169px;
   background: #e8f1f6;
 }
+.formulaire-ajoutPhoto {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+#addProject {
+  display: flex;
+  flex-direction: column;
+}
 .logo-ajout {
   width: 76px;
 }
@@ -323,13 +333,6 @@ li:hover {
 }
 #btn-valider:hover {
   background: #1d6154;
-}
-
-.formulaire-ajoutPhoto {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
 }
 
 input[type="file"] {

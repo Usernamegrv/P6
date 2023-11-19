@@ -186,51 +186,37 @@ function previewImage(event) {
 // Envoi du formulaire ajout
 //--------------------------
 
-function submitForm() {
-  const title = document.getElementById("title").value;
-  const category = document.getElementById("category").value;
-  const fileInput = document.getElementById("file");
-  const imageFile = fileInput.files[0];
-  const userId = sessionStorage.getItem("userId");
-  const authToken = sessionStorage.getItem("authToken");
-  console.log(category);
-  console.log(authToken);
-  console.log(imageFile);
+const form = document.querySelector("form");
 
-  const reader = new FileReader();
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  reader.onload = function () {
-    const imageString = reader.result;
+  const imageSrcElement = form.querySelector('[name="file"]');
+  const imageSrc = imageSrcElement ? imageSrcElement.value : null;
 
-    const apiData = {
-      title: title,
-      categoryId: category,
-      imageUrl: imageString,
-      userId: userId,
-    };
+  const formData = new FormData(form);
 
-    console.log(apiData);
+  // Récuperer le contenu du fichier et convertir en objet Blob
+  if (imageSrc) {
+    await fetch(imageSrc)
+      .then((response) => response.blob())
+      .then((blob) => formData.append("image", blob, "image.jpg"));
+  }
 
-    fetch("http://localhost:5678/api/works", {
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
       method: "POST",
       headers: {
         Authorization: `Bearer ${authToken}`,
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify(apiData),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`Erreur ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Requête réussie !!", data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la requête :", error.message);
-      });
-  };
-  reader.readAsDataURL(imageFile);
-}
+      body: formData,
+    });
+    if (!response.ok) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+    const data = await response.json();
+    console.log("Requête réussie", data);
+  } catch (error) {
+    console.error("Erreur lors de la requête:", error.message);
+  }
+});
