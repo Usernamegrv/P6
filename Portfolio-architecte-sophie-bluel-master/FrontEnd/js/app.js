@@ -117,6 +117,7 @@ const getProjects = async () => {
 
     if (response.ok) {
       const projects = await response.json();
+      console.log("Projets récupérés:", projects);
 
       afficherProjets(projects);
     } else {
@@ -216,10 +217,10 @@ form.addEventListener("submit", async (e) => {
     }
     const data = await response.json();
     console.log("Requête réussie", data);
+    getProjects();
   } catch (error) {
     console.error("Erreur lors de la requête:", error.message);
   }
-  getProjects();
 });
 
 // Icone arrow-left / retour sur modale précedente
