@@ -25,40 +25,46 @@
       <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
       <nav>
         <ul>
-          <li>projets</li>
-          <li>contact</li>
+          <li><a href="#mes-projets">projets</a></li>
+          <li><a href="#contact">contact</a></li>
           <li id="login-link">login</li>
-          <li><img src="./assets/icons/instagram.png" alt="Instagram" /></li>
+          <li>
+            <a href="https://www.instagram.com " rel="noopener" target="_blank"
+              ><img src="./assets/icons/instagram.png" alt="Instagram"
+            /></a>
+          </li>
         </ul>
       </nav>
     </header>
     <main>
       <section id="introduction">
-        <figure>
-          <img src="./assets/images/sophie-bluel.png" alt="" />
-        </figure>
-        <article>
-          <h2>Designer d'espace</h2>
-          <p>
-            Je raconte votre histoire, je valorise vos idées. Je vous accompagne
-            de la conception à la livraison finale du chantier.
-          </p>
-          <p>
-            Chaque projet sera étudié en commun, de façon à mettre en valeur les
-            volumes, les matières et les couleurs dans le respect de l’esprit
-            des lieux et le choix adapté des matériaux. Le suivi du chantier
-            sera assuré dans le souci du détail, le respect du planning et du
-            budget.
-          </p>
-          <p>
-            En cas de besoin, une équipe pluridisciplinaire peut-être constituée
-            : architecte DPLG, décorateur(trice)
-          </p>
-        </article>
+        <div class="container-introduction">
+          <figure>
+            <img src="./assets/images/sophie-bluel.png" alt="" />
+          </figure>
+          <article>
+            <h2>Designer d'espace</h2>
+            <p>
+              Je raconte votre histoire, je valorise vos idées. Je vous
+              accompagne de la conception à la livraison finale du chantier.
+            </p>
+            <p>
+              Chaque projet sera étudié en commun, de façon à mettre en valeur
+              les volumes, les matières et les couleurs dans le respect de
+              l’esprit des lieux et le choix adapté des matériaux. Le suivi du
+              chantier sera assuré dans le souci du détail, le respect du
+              planning et du budget.
+            </p>
+            <p>
+              En cas de besoin, une équipe pluridisciplinaire peut-être
+              constituée : architecte DPLG, décorateur(trice)
+            </p>
+          </article>
+        </div>
       </section>
 
       <section id="portfolio">
-        <div class="mes_projets">
+        <div class="mes_projets" id="mes-projets">
           <h2>Mes Projets</h2>
           <img
             src="./assets/icons/Vector_black.svg"
@@ -66,7 +72,7 @@
             id="icone-modifer"
           />
           <div id="modifier_mesProjets">
-            <a href="#modal1" class="js-modal"> Modifier</a>
+            <a href="#modal1" class="js-modal"> modifier</a>
           </div>
         </div>
 
@@ -102,6 +108,14 @@
             <!-- Modale mode ajout-->
 
             <div class="mode-ajout">
+              <div class="container-icone">
+                <img
+                  class="arrow-left"
+                  id="back-modale"
+                  src="assets/icons/arrow-left.svg"
+                />
+              </div>
+
               <h3 id="titleModal">Ajout photo</h3>
 
               <form id="addProject" enctype="multipart/form-data">
@@ -138,7 +152,7 @@
                 </select>
 
                 <div class="border-modal"></div>
-                <button type="submit" id="btn-valider">Valider</button>
+                <button type="submit" id="btn-valider" disabled>Valider</button>
               </form>
             </div>
           </div>
@@ -158,7 +172,9 @@
             <p>Hôtels & Restaurants</p>
           </button>
         </div>
-        <div class="gallery" id="gallery"></div>
+        <div class="container-gallery">
+          <div class="gallery" id="gallery"></div>
+        </div>
       </section>
       <section id="contact">
         <h2>Contact</h2>

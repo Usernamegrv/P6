@@ -221,3 +221,31 @@ form.addEventListener("submit", async (e) => {
   }
   getProjects();
 });
+
+// Icone arrow-left / retour sur modale précedente
+//------------------------------------------------
+
+const backModale = document.getElementById("back-modale");
+backModale.addEventListener("click", () => {
+  modeAjout.style.display = "none";
+  modeSuppression.style.display = "flex";
+});
+
+// Activer le btn valider seulement si tous les champs sont remplis
+//-----------------------------------------------------------------
+
+const addProject = document.getElementById("addProject");
+const btnValider = document.getElementById("btn-valider");
+
+addProject.addEventListener("input", () => {
+  const imageSrc = document.getElementById("file").value;
+  const title = document.getElementById("title").value;
+  const category = document.getElementById("category").value;
+
+  btnValider.disabled = !(imageSrc && title && category);
+
+  btnValider.classList.toggle("active", !btnValider.disabled);
+});
+
+// /!\ OBLIGER DE RECHARGER LA PAGE D'ACCUEIL POUR VOIR LES PROJETS AJOUTES ou SUPPRIMES
+// QUAND ON RETOURNE SUR LA MODALE AJOUT OBLIGER DE RAFRAICHIR LA PAGE POUR AVOIR UN FORMULAIRE VIDE

@@ -107,6 +107,9 @@ section {
 }
 body {
   line-height: 1;
+  font-family: "Work Sans";
+  font-size: 14px;
+  background: #fffef8;
 }
 ol,
 ul {
@@ -128,18 +131,15 @@ table {
   border-spacing: 0;
 }
 /** end reset css**/
-body {
-  max-width: 1140px;
-  margin: auto;
-  font-family: "Work Sans";
-  font-size: 14px;
-  background: #fffef8;
-}
 
 header {
   display: flex;
   justify-content: space-between;
-  margin: 50px 0;
+  margin: 50px;
+}
+header a {
+  text-decoration: none;
+  cursor: pointer;
 }
 section {
   margin: 50px 0;
@@ -189,6 +189,12 @@ li:hover {
 
 #introduction {
   display: flex;
+  justify-content: center;
+  margin: 80px 0 0 0;
+}
+.container-introduction {
+  width: 89%;
+  display: flex;
   align-items: center;
 }
 #introduction figure {
@@ -209,17 +215,24 @@ li:hover {
 
 #introduction p {
   margin-bottom: 0.5em;
+  margin-right: 3.5em;
 }
 #portfolio h2 {
-  margin-bottom: 1em;
+  margin-bottom: 5px;
 }
 .mes_projets {
   display: flex;
   justify-content: center;
-  align-items: baseline;
+  align-items: center;
 }
 #icone-modifer {
-  margin-left: 1em;
+  margin-left: 15px;
+}
+.js-modal {
+  text-decoration: none;
+  margin: 0 0 0 4px;
+  color: black;
+  cursor: pointer;
 }
 /*Modale*/
 
@@ -244,6 +257,7 @@ li:hover {
   padding: 30px 60px 20px 60px;
   border-radius: 10px;
   background-color: #fff;
+  overflow: auto;
 }
 .xmark {
   position: relative;
@@ -253,7 +267,7 @@ li:hover {
 .modal-modifier h3 {
   font-family: Work Sans;
   font-size: 26px;
-  margin: 0 0 46px 0;
+  margin: 0 0 20px 0;
 }
 .trash-icon {
   background: black;
@@ -291,10 +305,31 @@ li:hover {
   width: 95px;
 }
 .border-modal {
-  width: 430px;
+  width: 100%;
   border: solid 1px;
   color: rgba(0, 0, 0, 0.3);
   margin: 25px 0 30px 0;
+}
+.formulaire-ajoutPhoto {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+
+#addProject {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container-icone {
+  width: 100%;
+}
+.arrow-left {
+  position: relative;
+  right: 63px;
+  bottom: 17px;
+  width: 17px;
 }
 .formulaire-container {
   display: flex;
@@ -303,19 +338,32 @@ li:hover {
   width: 420px;
   height: 169px;
   background: #e8f1f6;
-}
-.formulaire-ajoutPhoto {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  align-items: center;
-}
-#addProject {
-  display: flex;
-  flex-direction: column;
+  margin-bottom: 10px;
 }
 .logo-ajout {
   width: 76px;
+}
+.label-text {
+  color: #444;
+}
+label[for="title"],
+label[for="category"] {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 20px;
+  color: #3d3d3d;
+}
+#title,
+#category {
+  width: 100%;
+  height: 50px;
+  border: none;
+  box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.09);
+  margin-top: 12px;
+}
+#category {
+  margin-bottom: 20px;
 }
 #ajout-photo,
 #btn-valider {
@@ -326,12 +374,14 @@ li:hover {
   color: #fff;
   font-family: Work Sans;
   cursor: pointer;
+  border: none;
 }
 
 #btn-valider {
   background: #a7a7a7;
 }
-#btn-valider:hover {
+
+#btn-valider.active {
   background: #1d6154;
 }
 
@@ -353,7 +403,7 @@ input[type="file"] {
   display: flex;
   justify-content: center;
   gap: 5px;
-  padding: 10px 0 40px 0;
+  padding: 30px 0 40px 0;
 }
 .filters button {
   width: 100px;
@@ -381,16 +431,23 @@ input[type="file"] {
 .filter-button[data-category="Hotels & restaurants"] {
   width: 198px;
 }
-.gallery {
+.container-gallery {
   width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.gallery {
+  width: 80%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
   grid-row-gap: 20px;
+  grid-column-gap: 15px;
 }
-
 .gallery img {
   width: 100%;
+}
+figcaption {
+  margin-top: 5px;
 }
 #contact {
   width: 50%;
@@ -478,6 +535,7 @@ footer nav ul {
   display: flex;
   justify-content: flex-end;
   background: white;
+  width: 100%;
 }
 
 #mode_edition {
