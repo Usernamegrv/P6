@@ -145,6 +145,7 @@ function deleteProject(id) {
       }
 
       getProjects();
+      location.reload();
     })
     .catch((error) => {
       console.error("Erreur lors de la suppression du projet:", error);
@@ -218,6 +219,7 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json();
     console.log("Requête réussie", data);
     getProjects();
+    location.reload();
   } catch (error) {
     console.error("Erreur lors de la requête:", error.message);
   }
