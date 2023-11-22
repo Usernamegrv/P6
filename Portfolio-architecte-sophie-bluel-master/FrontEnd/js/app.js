@@ -70,7 +70,7 @@ window.addEventListener("keydown", function (e) {
 //Récupérer projets et afficher dans la modale
 //--------------------------------------------
 
-// Fonction pour ajouter projets dans la modale mode-suppression
+// Fonction pour affichage projets dans la modale mode-suppression
 //--------------------------------------------------------------
 const afficherProjets = (projects) => {
   const modalGallery = document.getElementById("modal-gallery");
@@ -86,7 +86,25 @@ const afficherProjets = (projects) => {
     console.log(projectElement);
   });
 };
+// Fonctions pour affichache projets après suppression ou ajout
+//-------------------------------------------------------------
+const afficherProjetsHome = (projects) => {
+  const newGallery = document.getElementById("gallery");
+  newGallery.innerHTML = "";
 
+  projects.forEach((project) => {
+    const newProjectElement = createProjectElementHome(project);
+    newGallery.appendChild(newProjectElement);
+    console.log(newProjectElement);
+  });
+};
+
+function createProjectElementHome(project) {
+  const newProjectElement = document.createElement("figure");
+  newProjectElement.innerHTML = ` <img src="${project.imageUrl}" alt="${project.title}">
+  <figcaption>${project.title}</figcaption> id=${project.id}`;
+  return newProjectElement;
+}
 // Fonction pour déterminer le modèle d'un projet pour la modale
 //--------------------------------------------------------------
 function createProjectElement(project) {
@@ -120,6 +138,7 @@ const getProjects = async () => {
       console.log("Projets récupérés:", projects);
 
       afficherProjets(projects);
+      afficherProjetsHome(projects);
     } else {
       console.error("Impossible de charger les projets.");
     }
@@ -145,7 +164,6 @@ function deleteProject(id) {
       }
 
       getProjects();
-      location.reload();
     })
     .catch((error) => {
       console.error("Erreur lors de la suppression du projet:", error);
