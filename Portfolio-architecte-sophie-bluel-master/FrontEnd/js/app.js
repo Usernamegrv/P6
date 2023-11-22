@@ -86,7 +86,7 @@ const afficherProjets = (projects) => {
     console.log(projectElement);
   });
 };
-// Fonctions pour affichache projets après suppression ou ajout
+// Fonctions pour affichage projets après suppression ou ajout
 //-------------------------------------------------------------
 const afficherProjetsHome = (projects) => {
   const newGallery = document.getElementById("gallery");
@@ -101,8 +101,8 @@ const afficherProjetsHome = (projects) => {
 
 function createProjectElementHome(project) {
   const newProjectElement = document.createElement("figure");
-  newProjectElement.innerHTML = ` <img src="${project.imageUrl}" alt="${project.title}">
-  <figcaption>${project.title}</figcaption> id=${project.id}`;
+  newProjectElement.innerHTML = ` <img src="${project.imageUrl}" alt="${project.title}" id="${project.id}">
+  <figcaption>${project.title}</figcaption> `;
   return newProjectElement;
 }
 // Fonction pour déterminer le modèle d'un projet pour la modale
@@ -242,9 +242,39 @@ form.addEventListener("submit", async (e) => {
     {
       const previewImage = document.getElementById("preview-image");
       previewImage.src = "./assets/icons/picture-svgrepo-com 1.svg";
+      inputMessage.textContent = "Veuillez renseigner le titre";
+      selectMessage.textContent = "Veuillez faire une sélection";
     }
   } catch (error) {
     console.error("Erreur lors de la requête:", error.message);
+  }
+});
+
+// Messages utilisateur formulaire envoie
+//---------------------------------------
+const inputMessage = document.getElementById("input-message");
+const selectMessage = document.getElementById("select-message");
+const categorySelect = document.getElementById("category");
+const inputSelect = document.getElementById("title");
+
+inputSelect.addEventListener("input", (e) => {
+  const inputData = e.target.value;
+
+  if (inputData.trim() === "") {
+    console.log("Le titre n'est pas renseigné");
+    inputMessage.textContent = "Veuillez renseigner le titre";
+  } else {
+    inputMessage.textContent = "";
+  }
+});
+
+categorySelect.addEventListener("change", (e) => {
+  const selectData = e.target.value;
+  if (selectData.trim() === "") {
+    console.log("la selection n'est pas faite");
+    selectMessage.textContent = "Veuillez faire une selection";
+  } else {
+    selectMessage.textContent = "";
   }
 });
 
@@ -269,6 +299,5 @@ addProject.addEventListener("input", () => {
   const category = document.getElementById("category").value;
 
   btnValider.disabled = !(imageSrc && title && category);
-
   btnValider.classList.toggle("active", !btnValider.disabled);
 });

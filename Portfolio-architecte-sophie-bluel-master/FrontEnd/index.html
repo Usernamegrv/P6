@@ -143,13 +143,16 @@
 
                 <label for="title">Titre</label>
                 <input type="text" id="title" name="title" required />
+                <div id="input-message">Veuillez renseigner le titre</div>
 
                 <label for="category">Catégorie</label>
                 <select name="category" id="category" required>
+                  <option value=""></option>
                   <option value="1">Objets</option>
                   <option value="2">Appartements</option>
                   <option value="3">Hôtels & Restaurants</option>
                 </select>
+                <div id="select-message">Veuillez faire une sélection</div>
 
                 <div class="border-modal"></div>
                 <button type="submit" id="btn-valider" disabled>Valider</button>

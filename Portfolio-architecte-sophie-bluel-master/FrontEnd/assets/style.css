@@ -353,6 +353,7 @@ label[for="category"] {
   width: 100%;
   margin-top: 20px;
   color: #3d3d3d;
+  font-weight: 600;
 }
 #title,
 #category {
@@ -362,9 +363,7 @@ label[for="category"] {
   box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.09);
   margin-top: 12px;
 }
-#category {
-  margin-bottom: 20px;
-}
+
 #ajout-photo,
 #btn-valider {
   width: 237px;
@@ -548,4 +547,11 @@ footer nav ul {
 #mode_edition span {
   color: white;
   margin-left: 10px;
+}
+
+#input-message,
+#select-message {
+  width: 100%;
+  color: #3d3d3d;
+  margin-top: 4px;
 }
