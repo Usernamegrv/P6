@@ -249,6 +249,3 @@ addProject.addEventListener("input", () => {
 
   btnValider.classList.toggle("active", !btnValider.disabled);
 });
-
-// /!\ OBLIGER DE RECHARGER LA PAGE D'ACCUEIL POUR VOIR LES PROJETS AJOUTES ou SUPPRIMES
-// QUAND ON RETOURNE SUR LA MODALE AJOUT OBLIGER DE RAFRAICHIR LA PAGE POUR AVOIR UN FORMULAIRE VIDE
