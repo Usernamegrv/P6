@@ -219,7 +219,12 @@ form.addEventListener("submit", async (e) => {
     const data = await response.json();
     console.log("Requête réussie", data);
     getProjects();
-    location.reload();
+
+    form.reset();
+    {
+      const previewImage = document.getElementById("preview-image");
+      previewImage.src = "./assets/icons/picture-svgrepo-com 1.svg";
+    }
   } catch (error) {
     console.error("Erreur lors de la requête:", error.message);
   }
