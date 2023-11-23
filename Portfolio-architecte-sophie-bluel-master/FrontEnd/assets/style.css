@@ -325,7 +325,8 @@ li a:hover {
 .container-icone {
   width: 100%;
 }
-.arrow-left {
+#back-modale {
+  cursor: pointer;
   position: relative;
   right: 63px;
   bottom: 17px;
@@ -552,6 +553,6 @@ footer nav ul {
 #input-message,
 #select-message {
   width: 100%;
-  color: #3d3d3d;
+  color: #93532f;
   margin-top: 4px;
 }

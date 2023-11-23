@@ -236,7 +236,6 @@ form.addEventListener("submit", async (e) => {
     }
     const data = await response.json();
     console.log("Requête réussie", data);
-    getProjects();
 
     form.reset();
     {
@@ -245,6 +244,7 @@ form.addEventListener("submit", async (e) => {
       inputMessage.textContent = "Veuillez renseigner le titre";
       selectMessage.textContent = "Veuillez faire une sélection";
     }
+    getProjects();
   } catch (error) {
     console.error("Erreur lors de la requête:", error.message);
   }
