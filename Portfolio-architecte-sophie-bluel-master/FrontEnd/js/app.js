@@ -49,7 +49,6 @@ document.querySelectorAll(".js-modal").forEach((element) => {
   element.addEventListener("click", (e) => {
     openModal(e);
     e.preventDefault();
-    getProjects();
   });
 });
 
@@ -81,7 +80,7 @@ const afficherProjets = (projects) => {
   modeSuppression.style.display = "flex";
 
   projects.forEach((project) => {
-    const projectElement = createProjectElement(project);
+    const projectElement = createProjectElementModale(project);
     modalGallery.appendChild(projectElement);
     console.log(projectElement);
   });
@@ -107,7 +106,7 @@ function createProjectElementHome(project) {
 }
 // Fonction pour déterminer le modèle d'un projet pour la modale
 //--------------------------------------------------------------
-function createProjectElement(project) {
+function createProjectElementModale(project) {
   const projectElement = document.createElement("figure");
 
   projectElement.innerHTML = ` <img class="trash-icon" src="./assets/icons/trash-can-solid.svg" alt="icone supprimer image" id="${project.id}"> <img class="img-projects" src="${project.imageUrl}" alt="${project.title}" id="${project.id}"> `;
@@ -120,32 +119,6 @@ function createProjectElement(project) {
 
   return projectElement;
 }
-
-// Fonction pour Fetch projets
-//----------------------------
-const getProjects = async () => {
-  try {
-    const response = await fetch("http://localhost:5678/api/works", {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${authToken}`,
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response.ok) {
-      const projects = await response.json();
-      console.log("Projets récupérés:", projects);
-
-      afficherProjets(projects);
-      afficherProjetsHome(projects);
-    } else {
-      console.error("Impossible de charger les projets.");
-    }
-  } catch (error) {
-    console.error("Erreur dans le chargement des projets", error);
-  }
-};
 
 // Fonction pour supprimer un projet
 //----------------------------------
@@ -163,7 +136,7 @@ function deleteProject(id) {
         throw new Error("La suppression a échouée.");
       }
 
-      getProjects();
+      getListProjects();
     })
     .catch((error) => {
       console.error("Erreur lors de la suppression du projet:", error);
@@ -244,7 +217,7 @@ form.addEventListener("submit", async (e) => {
       inputMessage.textContent = "Veuillez renseigner le titre";
       selectMessage.textContent = "Veuillez faire une sélection";
     }
-    getProjects();
+    getListProjects();
   } catch (error) {
     console.error("Erreur lors de la requête:", error.message);
   }

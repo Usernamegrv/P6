@@ -25,7 +25,7 @@ function ajoutListenerConnexion() {
           console.log("Connexion réussie. Id :", data.userId);
           console.log("Token:", data.token);
 
-          const token = `${data.token}`;
+          const token = data.token;
           const userId = data.userId;
           sessionStorage.setItem("authToken", token);
           sessionStorage.setItem("userId", userId);

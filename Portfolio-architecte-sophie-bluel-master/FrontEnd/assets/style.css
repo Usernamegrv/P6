@@ -412,19 +412,20 @@ input[type="file"] {
   border: 1px solid #1d6154;
   background: #fffef8;
 }
-.filters button p {
+.filters button:hover {
+  background: #1d6154;
+  cursor: pointer;
+}
+.filter-button span {
   color: #1d6154;
   font-size: 16px;
   font-weight: 700;
   font-family: Syne;
 }
-.filters button:hover {
-  background: #1d6154;
-  cursor: pointer;
-}
-.filters button:hover p {
+.filters button:hover span {
   color: #fffef8;
 }
+
 .filter-button[data-category="Appartements"] {
   width: 157px;
 }

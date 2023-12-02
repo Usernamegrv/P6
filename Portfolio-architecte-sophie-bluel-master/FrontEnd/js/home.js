@@ -1,51 +1,79 @@
-//-------------------------------------------------
-// Affichage projets et filtrage selon category name
-//-------------------------------------------------
+let workList = [];
+const gallery = document.querySelector(".gallery");
 
-document.addEventListener("DOMContentLoaded", () => {
-  const gallery = document.querySelector(".gallery");
-  const filterButtons = document.querySelectorAll(".filter-button");
+const getListProjects = async () => {
+  await fetch("http://localhost:5678/api/works")
+    .then((response) => response.json())
+    .then((projects) => {
+      workList = projects;
+      console.log(workList);
+      afficherProjets(workList);
+      afficherProjetsHome(workList);
 
-  filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      const category = button.getAttribute("data-category");
-      filterProjectsByCategory(category);
+      const categories = [
+        ...new Set(projects.map((project) => project.category.name)),
+      ];
+      addFilterButtons(categories);
+    })
+    .catch((error) => {
+      console.error("une erreur s'est produite", error);
     });
+};
+getListProjects();
+
+// Filtrer projets selon catégorie
+//-----------------------------------------------------
+function filterProjectsByCategory(categoryName) {
+  gallery.innerHTML = "";
+
+  workList.forEach((project) => {
+    if (categoryName === "Tous" || project.category.name === categoryName) {
+      const projectElement = createProjectElement(project);
+      gallery.appendChild(projectElement);
+    }
   });
+}
 
-  // Fonction Fetch pour afficher projets selon catégorie
-  //-----------------------------------------------------
-  function filterProjectsByCategory(categoryName) {
-    fetch("http://localhost:5678/api/works")
-      .then((response) => response.json())
-      .then((projects) => {
-        gallery.innerHTML = "";
+// Création d'un bouton
+//---------------------
+function createFilterButton(categoryName) {
+  const button = document.createElement("button");
+  button.classList.add("filter-button");
+  button.setAttribute("data-category", categoryName);
+  const span = document.createElement("span");
+  span.textContent = categoryName;
 
-        projects.forEach((project) => {
-          if (
-            categoryName === "Tous" ||
-            project.category.name === categoryName
-          ) {
-            const projectElement = createProjectElement(project);
-            gallery.appendChild(projectElement);
-          }
-        });
-      });
-  }
+  button.appendChild(span);
+  button.addEventListener("click", () => {
+    filterProjectsByCategory(categoryName);
+  });
+  return button;
+}
 
-  // Fonction pour déterminer le modele d'un projet pour page d'accueil
-  //-------------------------------------------------------------------
-  function createProjectElement(project) {
-    const projectElement = document.createElement("figure");
-    projectElement.innerHTML = ` <img src="${project.imageUrl}" alt="${project.title}">
+//Ajouter boutons au DOM
+//----------------------
+function addFilterButtons(categories) {
+  const filterContainer = document.querySelector(".filters");
+  const allButton = createFilterButton("Tous");
+  filterContainer.appendChild(allButton);
+
+  categories.forEach((category) => {
+    const button = createFilterButton(category);
+    filterContainer.appendChild(button);
+  });
+}
+// Fonction pour déterminer le modele d'un projet pour page d'accueil
+//-------------------------------------------------------------------
+function createProjectElement(project) {
+  const projectElement = document.createElement("figure");
+  projectElement.innerHTML = ` <img src="${project.imageUrl}" alt="${project.title}">
                               <figcaption>${project.title}</figcaption>`;
 
-    return projectElement;
-  }
+  return projectElement;
+}
 
-  // Au chargement de la page, affiche tous les projets.
-  filterProjectsByCategory("Tous");
-});
+// Au chargement de la page, affiche tous les projets.
+// filterProjectsByCategory("Tous");
 
 //Récupération du token pour mode édition
 //---------------------------------------
