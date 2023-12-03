@@ -90,12 +90,14 @@ const loginLink = document.getElementById("login-link");
 const iconeModifier = document.getElementById("icone-modifer");
 const modifierMesProjets = document.getElementById("modifier_mesProjets");
 const filterButtons = document.querySelector(".filters");
+const containerGallery = document.querySelector(".container-gallery");
 
 if (authToken) {
   // L'utilisateur est connecté
   filterButtons.style.display = "none";
   editionBanner.style.display = "flex";
   loginLink.innerHTML = '<a href="#">logout</a>';
+  containerGallery.style.marginTop = "30px";
   loginLink.addEventListener("click", function (event) {
     event.preventDefault();
     sessionStorage.removeItem("authToken");
@@ -110,6 +112,7 @@ if (authToken) {
   filterButtons.style.display = "flex";
   editionBanner.style.display = "none";
   loginLink.innerHTML = '<a href="./login.html">login</a>';
+  containerGallery.style.marginTop = "0";
 
   iconeModifier.style.display = "none";
   modifierMesProjets.style.display = "none";
