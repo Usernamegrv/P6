@@ -1,6 +1,9 @@
 let workList = [];
 const gallery = document.querySelector(".gallery");
 
+// Fetch projets
+//--------------
+
 const getListProjects = async () => {
   await fetch("http://localhost:5678/api/works")
     .then((response) => response.json())
@@ -23,6 +26,7 @@ getListProjects();
 
 // Filtrer projets selon catégorie
 //-----------------------------------------------------
+
 function filterProjectsByCategory(categoryName) {
   gallery.innerHTML = "";
 
@@ -36,6 +40,7 @@ function filterProjectsByCategory(categoryName) {
 
 // Création d'un bouton
 //---------------------
+
 function createFilterButton(categoryName) {
   const button = document.createElement("button");
   button.classList.add("filter-button");
@@ -52,8 +57,10 @@ function createFilterButton(categoryName) {
 
 //Ajouter boutons au DOM
 //----------------------
+
 function addFilterButtons(categories) {
   const filterContainer = document.querySelector(".filters");
+  filterContainer.innerHTML = "";
   const allButton = createFilterButton("Tous");
   filterContainer.appendChild(allButton);
 
@@ -62,8 +69,10 @@ function addFilterButtons(categories) {
     filterContainer.appendChild(button);
   });
 }
+
 // Fonction pour déterminer le modele d'un projet pour page d'accueil
 //-------------------------------------------------------------------
+
 function createProjectElement(project) {
   const projectElement = document.createElement("figure");
   projectElement.innerHTML = ` <img src="${project.imageUrl}" alt="${project.title}">
@@ -71,9 +80,6 @@ function createProjectElement(project) {
 
   return projectElement;
 }
-
-// Au chargement de la page, affiche tous les projets.
-// filterProjectsByCategory("Tous");
 
 //Récupération du token pour mode édition
 //---------------------------------------
@@ -83,34 +89,26 @@ const editionBanner = document.getElementById("mode_edition");
 const loginLink = document.getElementById("login-link");
 const iconeModifier = document.getElementById("icone-modifer");
 const modifierMesProjets = document.getElementById("modifier_mesProjets");
+const filterButtons = document.querySelector(".filters");
 
 if (authToken) {
   // L'utilisateur est connecté
-  const filterButtons = document.querySelectorAll(".filter-button");
-  filterButtons.forEach((button) => {
-    button.style.display = "none";
-  });
+  filterButtons.style.display = "none";
   editionBanner.style.display = "flex";
-
   loginLink.innerHTML = '<a href="#">logout</a>';
-
   loginLink.addEventListener("click", function (event) {
     event.preventDefault();
     sessionStorage.removeItem("authToken");
-
     window.location.href = "./index.html";
   });
 
-  iconeModifier.style.dsplay = "block";
+  iconeModifier.style.display = "block";
   modifierMesProjets.style.display = "block";
 } else {
   // L'utilisateur n'est pas connecté
-  const filterButtons = document.querySelectorAll(".filter-button");
-  filterButtons.forEach((button) => {
-    button.style.display = "block";
-  });
-  editionBanner.style.display = "none";
 
+  filterButtons.style.display = "flex";
+  editionBanner.style.display = "none";
   loginLink.innerHTML = '<a href="./login.html">login</a>';
 
   iconeModifier.style.display = "none";
