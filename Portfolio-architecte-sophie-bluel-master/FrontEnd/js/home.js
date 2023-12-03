@@ -9,7 +9,7 @@ const getListProjects = async () => {
     .then((response) => response.json())
     .then((projects) => {
       workList = projects;
-      console.log(workList);
+
       afficherProjets(workList);
       afficherProjetsHome(workList);
 

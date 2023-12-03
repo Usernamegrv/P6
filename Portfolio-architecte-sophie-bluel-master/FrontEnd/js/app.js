@@ -82,7 +82,6 @@ const afficherProjets = (projects) => {
   projects.forEach((project) => {
     const projectElement = createProjectElementModale(project);
     modalGallery.appendChild(projectElement);
-    console.log(projectElement);
   });
 };
 // Fonctions pour affichage projets après suppression ou ajout
@@ -94,7 +93,6 @@ const afficherProjetsHome = (projects) => {
   projects.forEach((project) => {
     const newProjectElement = createProjectElementHome(project);
     newGallery.appendChild(newProjectElement);
-    console.log(newProjectElement);
   });
 };
 
